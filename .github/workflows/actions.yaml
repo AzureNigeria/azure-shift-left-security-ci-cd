@@ -70,7 +70,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: ./.github/actions/secret-scans@main
+      - uses: ./.github/actions/secret-scans
         with:
           github_token_gitleaks: ${{ secrets.GITHUB_TOKEN }}
           gitleaks_license: ${{ secrets.GITLEAKS_LICENSE }}
@@ -106,7 +106,7 @@ jobs:
           echo "Main branch SHA: ${{ steps.commits.outputs.main_sha }}"
 
       - name: Run SAST scan
-        uses: ./.github/actions/sast@main
+        uses: ./.github/actions/sast
         with:
           repository-name: ${{ github.repository }}
           sast-recommend-uri: ${{ secrets.SAST_RECOMMEND_URI }}
@@ -125,7 +125,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run SCA scan
-        uses: ./.github/actions/sca@main
+        uses: ./.github/actions/sca
         with:
           repository-name: ${{ github.repository }}
           slack_channel: ${{ secrets.SLACK_CHANNEL }}
